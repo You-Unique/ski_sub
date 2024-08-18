@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ski_sub/screens/sign_in_screen/sign_in_screen.dart';
+import 'package:ski_sub/shared/ski_colors.dart';
 import 'package:ski_sub/utils/extensions.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,16 +28,31 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
-        child: Center(
-          child: Image.asset(
-            'splash_screen_logo'.toPNG(),
-            height: 200,
-            width: 200,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              child: Center(
+                child: Image.asset(
+                  'splash_screen_logo'.toPNG(),
+                  height: 200,
+                  width: 200,
+                ),
+              ),
+            ),
+            10.vSpace,
+            Text(
+              'SKI SUB',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 30,
+                color: SkiColors.primaryColor,
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -22,7 +22,16 @@ class InputField extends StatelessWidget {
       obscureText: obscure,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 18,
+          // color: SkiColors.primaryColor,
+        ),
         hintText: hint,
+        hintStyle: const TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
         filled: true,
         suffixIcon: suffixWidget,
         fillColor: const Color.fromRGBO(249, 250, 251, 1),

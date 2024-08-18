@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ski_sub/screens/car_booking_screen/car_booking_screen.dart';
 import 'package:ski_sub/utils/extensions.dart';
 
 class QuickActionSection extends StatelessWidget {
@@ -22,9 +23,15 @@ class QuickActionSection extends StatelessWidget {
           20.vSpace,
           Row(
             children: [
-              const QuickActionSectionButton(
-                icon: 'car_rental_icon',
-                title: 'Car Rentals',
+              GestureDetector(
+                onTap: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const CarBookingScreen();
+                })),
+                child: const QuickActionSectionButton(
+                  icon: 'car_rental_icon',
+                  title: 'Car Rentals',
+                ),
               ),
               20.hSpace,
               const QuickActionSectionButton(

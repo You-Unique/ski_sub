@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ski_sub/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:ski_sub/screens/home_screen/home_screen.dart';
 import 'package:ski_sub/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:ski_sub/shared/shared.dart';
@@ -24,21 +25,25 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+  bool obscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leadingWidth: 70,
         leading: const CustomBackButton(),
         title: const Text(
           'Login',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w700,
           ),
         ),
       ),
       bottomNavigationBar: SafeArea(
+        minimum: const EdgeInsets.only(bottom: 30),
         child: Text.rich(
           TextSpan(
             text: 'Don’t have an account? ',
@@ -78,10 +83,11 @@ class _SignInScreenState extends State<SignInScreen> {
               'Sign In 👋',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
-                fontSize: 20,
+                fontSize: 24,
+                color: Color.fromRGBO(16, 0, 199, 1),
               ),
             ),
-            20.vSpace,
+            10.vSpace,
             const Text(
               'Welcome back, Log in to your account ',
               style: TextStyle(
@@ -93,23 +99,40 @@ class _SignInScreenState extends State<SignInScreen> {
             InputField(
               textEditingController: _emailController,
               label: 'Email',
-              hint: 'johnDoe@gmail.com',
+              hint: 'johndoe@email.com',
             ),
             20.vSpace,
             InputField(
               textEditingController: _passwordController,
               label: 'Password',
               hint: '******',
-              obscure: true,
+              obscure: obscure,
+              suffixWidget: GestureDetector(
+                onTap: () => setState(() {
+                  obscure = !obscure;
+                }),
+                child: const Icon(
+                  Icons.visibility_off_outlined,
+                  color: Color.fromRGBO(107, 114, 128, 1),
+                ),
+              ),
             ),
             30.vSpace,
-            Text(
-              'Forgot Password?',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                color: SkiColors.primaryColor,
-              ),
+            Text.rich(
+              TextSpan(
+                  text: 'Forgot Password?',
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const ForgotPassword();
+                      }));
+                    },
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: SkiColors.primaryColor,
+                  )),
             ),
             30.vSpace,
             Button(

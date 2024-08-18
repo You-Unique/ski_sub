@@ -22,7 +22,7 @@ class HomeViewHeader extends StatelessWidget {
               ),
               20.hSpace,
               const Text(
-                'Hello,\nAbdullah!',
+                'Hello,\nAbdullah Muhammed!',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
@@ -77,13 +77,21 @@ class HomeViewHeader extends StatelessWidget {
                   Icons.file_download_outlined,
                   color: Colors.white,
                 ),
-                10.vSpace,
-                const Text(
-                  'Fund Wallet',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: Colors.white,
+                15.vSpace,
+                Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: const Text(
+                    'Fund Wallet',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

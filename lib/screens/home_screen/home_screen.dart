@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ski_sub/screens/home_screen/view/home_view/home_view.dart';
 import 'package:ski_sub/screens/home_screen/widget/bottom_nav.dart';
+import 'package:ski_sub/screens/services_screen/services_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,9 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
           children: [
             const HomeView(),
+            const ServicesScreen(),
             Container(
-              color: Colors.purple,
-            ),
+              color: Colors.blue,
+            )
           ],
         ),
       ),

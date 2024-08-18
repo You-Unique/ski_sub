@@ -20,7 +20,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
+  bool obscure1 = true;
   bool obscure = true;
+
   @override
   void dispose() {
     _fullName.dispose();
@@ -35,17 +37,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leadingWidth: 70,
         leading: const CustomBackButton(),
         title: const Text(
           'Register',
           style: TextStyle(
             fontWeight: FontWeight.w700,
-            fontSize: 16,
+            fontSize: 18,
           ),
         ),
       ),
       bottomNavigationBar: SafeArea(
+        minimum: const EdgeInsets.only(bottom: 30),
         child: Text.rich(
           TextSpan(
             text: 'Have an account? ',
@@ -71,82 +75,88 @@ class _SignUpScreenState extends State<SignUpScreen> {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            20.vSpace,
-            const Text(
-              'Get Started 👋',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              20.vSpace,
+              const Text(
+                'Get Started 👋',
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                    color: Color.fromRGBO(16, 0, 199, 1)),
               ),
-            ),
-            20.vSpace,
-            const Text(
-              'Create an account so you can pay your bills and purchase top-ups faster',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-              ),
-            ),
-            40.vSpace,
-            InputField(
-              textEditingController: _fullName,
-              label: 'Full Name',
-              hint: 'John Doe',
-            ),
-            20.vSpace,
-            InputField(
-              textEditingController: _email,
-              label: 'Email',
-              hint: 'johndoe@email.com',
-            ),
-            20.vSpace,
-            InputField(
-              textEditingController: _phoneNumber,
-              label: 'Phone Number',
-              hint: '123456789',
-            ),
-            20.vSpace,
-            InputField(
-              textEditingController: _password,
-              label: 'Password',
-              hint: '********',
-              obscure: obscure,
-              suffixWidget: GestureDetector(
-                onTap: () => setState(() {
-                  obscure = !obscure;
-                }),
-                child: const Icon(
-                  Icons.visibility_off_outlined,
-                  color: Color.fromRGBO(107, 114, 128, 1),
+              10.vSpace,
+              const Text(
+                'Create an account so you can pay your bills and purchase top-ups faster',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
                 ),
               ),
-            ),
-            20.vSpace,
-            InputField(
-              textEditingController: _confirmPassword,
-              label: 'Comfirm Password',
-              hint: '******',
-              obscure: obscure,
-              suffixWidget: GestureDetector(
-                onTap: () => setState(() {
-                  obscure = !obscure;
-                }),
-                child: const Icon(
-                  Icons.visibility_off_outlined,
-                  color: Color.fromRGBO(107, 114, 128, 1),
+              40.vSpace,
+              InputField(
+                textEditingController: _fullName,
+                label: 'Full Name',
+                hint: 'John Doe',
+              ),
+              20.vSpace,
+              InputField(
+                textEditingController: _email,
+                label: 'Email',
+                hint: 'johndoe@email.com',
+              ),
+              20.vSpace,
+              InputField(
+                textEditingController: _phoneNumber,
+                label: 'Phone Number',
+                hint: '123456789',
+              ),
+              20.vSpace,
+              InputField(
+                textEditingController: _password,
+                label: 'Password',
+                hint: '********',
+                obscure: obscure1,
+                suffixWidget: GestureDetector(
+                  onTap: () => setState(() {
+                    obscure1 = !obscure1;
+                  }),
+                  child: const Icon(
+                    Icons.visibility_off_outlined,
+                    color: Color.fromRGBO(107, 114, 128, 1),
+                  ),
                 ),
               ),
-            ),
-            40.vSpace,
-            Button(buttonName: 'Sign Up', onTap: () {}),
-          ],
+              20.vSpace,
+              InputField(
+                textEditingController: _confirmPassword,
+                label: 'Comfirm Password',
+                hint: '******',
+                obscure: obscure,
+                suffixWidget: GestureDetector(
+                  onTap: () => setState(() {
+                    obscure = !obscure;
+                  }),
+                  child: const Icon(
+                    Icons.visibility_off_outlined,
+                    color: Color.fromRGBO(107, 114, 128, 1),
+                  ),
+                ),
+              ),
+              40.vSpace,
+              Button(
+                  buttonName: 'Sign Up',
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          ),
         ),
       ),
     );

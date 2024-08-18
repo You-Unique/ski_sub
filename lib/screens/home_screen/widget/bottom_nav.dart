@@ -33,6 +33,16 @@ class BottomNav extends StatelessWidget {
               onTap: () => onTap(1),
               child: BottomNavItem(
                 selected: currentIndex == 1,
+                icon: 'hotel_booking_icon',
+                title: 'Services',
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () => onTap(2),
+              child: BottomNavItem(
+                selected: currentIndex == 2,
                 icon: 'profile_icon',
                 title: 'Profile',
               ),
@@ -64,7 +74,7 @@ class BottomNavItem extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
-            width: selected ? 3 : 2,
+            width: selected ? 5 : 2,
             color: selected
                 ? SkiColors.primaryColor
                 : const Color.fromRGBO(225, 227, 237, 1),
